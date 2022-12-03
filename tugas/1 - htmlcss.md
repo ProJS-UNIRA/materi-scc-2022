@@ -12,6 +12,8 @@ Berdasarkan kode HTML berikut, buat sintak emmet yang sesuai untuk memperpendek 
 <footer></footer>
 ```
 
+---
+
 ```html
 <section class="hero">
   <h1>Hero</h1>
@@ -19,6 +21,8 @@ Berdasarkan kode HTML berikut, buat sintak emmet yang sesuai untuk memperpendek 
   <button>Button</button>
 </section>
 ```
+
+---
 
 ```html
 <section class="audio-widget">
@@ -32,6 +36,8 @@ Berdasarkan kode HTML berikut, buat sintak emmet yang sesuai untuk memperpendek 
   </div>
 </section>
 ```
+
+---
 
 ```html
 <header>
@@ -55,10 +61,14 @@ Berdasarkan kode HTML berikut, buat sintak emmet yang sesuai untuk memperpendek 
 </header>
 ```
 
+---
+
 ## 2\. Animasi CSS
 
 Buatlah animasi CSS berikut:
 
 ![animasi](https://blog.hubspot.com/hs-fs/hubfs/c4d9a3a8bb98a17701aa1f66901db67d.gif?width=870&name=c4d9a3a8bb98a17701aa1f66901db67d.gif)
+
+---
 
 ![animasi](https://blog.hubspot.com/hs-fs/hubfs/7a8f8d634013568124e130728834d47a.gif?width=1500&name=7a8f8d634013568124e130728834d47a.gif)
