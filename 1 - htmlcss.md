@@ -77,12 +77,12 @@ Kode berikut adalah kode HTML yang menggunakan tag semantik:
 ```html
 <header></header>
 <section>
-	<article>
-		<figure>
-			<img>
-			<figcaption></figcaption>
-		</figure>
-	</article>
+  <article>
+    <figure>
+      <img>
+      <figcaption></figcaption>
+    </figure>
+  </article>
 </section>
 <footer></footer>
 ```
@@ -92,12 +92,12 @@ Kode berikut adalah kode HTML yang menggunakan tag non-semantik:
 ```html
 <div id="header"></div>
 <div class="section">
-	<div class="article">
-		<div class="figure">
-			<img>
-			<div class="figcaption"></div>
-		</div>
-	</div>
+  <div class="article">
+    <div class="figure">
+      <img>
+      <div class="figcaption"></div>
+    </div>
+  </div>
 </div>
 <div id="footer"></div>
 ```
@@ -199,14 +199,286 @@ __Climb-up__
 
 Untuk membuat climb-up, cukup ketikkan `^` diikuti dengan elemen. Contoh: `div>ul>li*5>a^p`, `div>ul>li*5>a^p^div`, `div>ul>li*5>a^p^div>img`, dan lain-lain.
 
+__Playground__
+
+Untuk mencoba Emmet, kita dapat menggunakan quiz yang berada di [https://codepen.io/rileypaulsen/pen/MVxoGv](https://codepen.io/rileypaulsen/pen/MVxoGv).
+
+
 ---
 
 ## CSS
 
-![CSS](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png)
+![CSS](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/512px-CSS3_logo_and_wordmark.svg.png)
 
 ### Penempatan CSS
 
+Ada beberapa cara untuk menempatkan CSS pada sebuah halaman web:
+
+  * Inline CSS (__tidak disarankan__)
+  * Internal CSS (__tidak disarankan__)
+  * External CSS (__disarankan__)
+
+__Inline CSS__
+
+Inline CSS adalah cara untuk menempatkan CSS pada sebuah elemen HTML. Inline CSS dapat dituliskan pada tag HTML dengan menambahkan atribut `style`. Contoh:
+
+```html
+<p style="color: red;">Ini adalah paragraf.</p>
+```
+
+__Internal CSS__
+
+Internal CSS adalah cara untuk menempatkan CSS pada sebuah halaman web. Internal CSS dapat dituliskan pada tag HTML dengan menambahkan tag `style` pada bagian `head`. Contoh:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ini adalah judul</title>
+  <style>
+    p {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <p>Ini adalah paragraf.</p>
+</body>
+</html>
+```
+
+__External CSS__
+
+External CSS adalah cara untuk menempatkan CSS pada sebuah halaman web. External CSS dapat dituliskan pada file `.css` dan ditambahkan pada tag HTML dengan menambahkan tag `link` pada bagian `head`. Contoh:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ini adalah judul</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <p>Ini adalah paragraf.</p>
+</body>
+</html>
+```
+
+Dengan menggunakan External CSS, kita dapat memisahkan file CSS dengan file HTML. Hal ini akan memudahkan kita untuk mengelola file CSS. Dalam file CSS, kita dapat menuliskan CSS untuk beberapa halaman web. Contoh:
+
+```css
+p {
+  color: red;
+}
+```
+
+`p` disebut dengan _selector_. Selector digunakan untuk memilih elemen HTML yang akan diberikan CSS. Selector dapat berupa nama elemen, nama ID, nama class, dan lain-lain. Kemudian setelah selector, kita dapat menuliskan _property_ dan _value_ yang akan diberikan pada elemen HTML yang dipilih. Property dan value dipisahkan dengan tanda `:`.
+
+### CSS Variable
+
+CSS Variable adalah cara untuk membuat variabel pada CSS. CSS Variable dapat dituliskan dengan menambahkan `--` di depan nama variabel. Contoh:
+
+```css
+:root {
+  --main-color: red;
+}
+```
+
+Untuk menggunakannya, kita dapat menuliskan `var(--nama-variabel)`. Contoh:
+
+```css
+p {
+  color: var(--main-color);
+}
+```
+
+
 ### CSS Selector
 
+Untuk memilih elemen HTML yang akan diberikan style, kita dapat menggunakan CSS Selector. Berikut ini adalah beberapa CSS Selector yang dapat digunakan:
+
+#### Basic Selector
+  * Universal Selector: `*`
+    Dengan menggunakan universal selector, kita dapat memilih semua elemen HTML. Contoh: `* { color: red; }`
+  * Type Selector: `h1`, `p`, `div`, `img`, `a`, `ul`, `li`, dan lain-lain.
+    Dengan menggunakan type selector, kita dapat memilih elemen HTML berdasarkan nama elemen. Contoh: `p { color: red; }`
+  * Class Selector
+    Dengan menggunakan class selector, kita dapat memilih elemen HTML berdasarkan nama class. Contoh: `.class { color: red; }`
+  * ID Selector
+    Dengan menggunakan ID selector, kita dapat memilih elemen HTML berdasarkan nama ID. Contoh: `#id { color: red; }`
+  * Attribute Selector
+    Dengan menggunakan attribute selector, kita dapat memilih elemen HTML berdasarkan atribut. Contoh: 
+    - `[href] { color: red; }`, 
+    - `[href="https://google.com"] { color: red; }`,
+
+#### Grouping Selector
+  * List Selector
+    Dengan menggunakan list selector, kita dapat memilih beberapa elemen HTML dengan menggunakan koma. Contoh: `h1, p, div { color: red; }`
+
+#### Combinator Selector
+  * Descendant Selector
+    Dengan menggunakan descendant selector, kita dapat memilih elemen HTML yang merupakan turunan dari elemen HTML lain. Contoh: `div p { color: red; }`
+  * Child Selector
+    Dengan menggunakan child selector, kita dapat memilih elemen HTML yang merupakan anak dari elemen HTML lain. Contoh: `div > p { color: red; }`
+  * General Sibling Selector
+    Dengan menggunakan general sibling selector, kita dapat memilih elemen HTML yang merupakan saudara dari elemen HTML lain. Contoh: `div ~ p { color: red; }`
+  * Adjacent Sibling Selector
+    Dengan menggunakan adjacent sibling selector, kita dapat memilih elemen HTML yang merupakan saudara dekat dari elemen HTML lain. Contoh: `div + p { color: red; }`
+  
+#### Pseudo-class dan Pseudo-element Selector
+  * Pseudo-class Selector
+    Dengan menggunakan pseudo-class selector, kita dapat memilih elemen HTML berdasarkan kondisi tertentu. Contoh: `a:hover { color: red; }`
+  * Pseudo-element Selector
+    Dengan menggunakan pseudo-element selector, kita dapat memilih elemen HTML berdasarkan kondisi tertentu. Contoh: `p::first-line { color: red; }`
+
+#### Structural Pseudo-class Selector
+  * :root
+    Contoh: `:root { color: red; }`
+  * :empty
+    Contoh: `p:empty { color: red; }`
+  * :nth-child()
+    Contoh: `p:nth-child(2) { color: red; }`
+  * :nth-last-child()
+    Contoh: `p:nth-last-child(2) { color: red; }`
+  * :first-child
+    Contoh: `p:first-child { color: red; }`
+  * :last-child
+    Contoh: `p:last-child { color: red; }`
+  * :only-child
+    Contoh: `p:only-child { color: red; }`
+  * :nth-of-type()
+    Contoh: `p:nth-of-type(2) { color: red; }`
+  * :nth-last-of-type()
+    Contoh: `p:nth-last-of-type(2) { color: red; }`
+  * :first-of-type
+    Contoh: `p:first-of-type { color: red; }`
+  * :last-of-type
+    Contoh: `p:last-of-type { color: red; }`
+  * :only-of-type
+    Contoh: `p:only-of-type { color: red; }`
+
+#### Negation Pseudo-class Selector
+  * :not()
+    Dengan menggunakan negation pseudo-class selector, kita dapat memilih elemen HTML yang tidak sesuai dengan kondisi yang ditentukan. Contoh: `:not(p) { color: red; }`
+
 ### Animasi
+
+Dengan menggunakan CSS, kita dapat membuat animasi pada elemen HTML. Animasi terdiri dari dua komponent utama, yaitu _keyframes_ dan _animation_. Keyframe menyatakan awal dan akhir dari animasi, sedangkan animation menyatakan bagaimana animasi tersebut akan berjalan. Kelebihan dari penggunaan CSS untuk membuat animasi adalah kita dapat membuat animasi yang berjalan secara _smooth_ dan tidak membebani komputer, serta tidak memerlukan library tambahan.
+
+#### Animation
+
+Untuk membuat animasi, kita dapat menggunakan property `animation` dan sub property pada elemen HTML. Kita bisa mengatur waktu, durasi, dan detail lainnya dari animasi tersebut. 
+
+Berikut ini adalah beberapa sub property yang dapat digunakan:
+
+  * `animation-name`
+    Untuk menentukan nama dari animasi. Contoh: `animation-name: example;`
+  * `animation-duration`
+    Untuk menentukan durasi dari animasi. Contoh: `animation-duration: 5s;`
+  * `animation-direction`
+    Untuk menentukan arah dari animasi apakah dari depan ke belakang atau sebaliknya. Contoh: 
+    `animation-direction: alternate;`
+  * `animation-iteration-count`
+    Untuk menentukan jumlah iterasi dari animasi. Contoh: `animation-iteration-count: 3;`
+  * `animation-timing-function`
+    Untuk menentukan fungsi waktu dari animasi. Contoh: `animation-timing-function: ease-in;`
+  * `animation-delay`
+    Untuk menentukan waktu delay dari animasi. Contoh: `animation-delay: 2s;`
+  * `animation-fill-mode`
+    Untuk menentukan bagaimana animasi akan berjalan ketika elemen HTML tersebut tidak lagi dalam animasi. Contoh: `animation-fill-mode: forwards;`
+  * `animation-play-state`
+    Untuk menentukan apakah animasi akan berjalan atau tidak. Contoh: `animation-play-state: paused;`
+
+#### Keyframes
+
+Untuk membuat animasi, kita perlu membuat keyframe terlebih dahulu. Keyframe merupakan bagian dari animasi yang menyatakan awal dan akhir dari animasi. Keyframe dapat dibuat dengan menggunakan `@keyframes` dan nama dari keyframe tersebut. Setiap keyframe mendeskripsikan bagaimana elemen di tampilkan selama urutan animasi.
+
+Keyframe menggunakan `<percentage>` yang mengindikasikan persentase dari animasi. Persentase tersebut menunjukkan bagaimana elemen HTML tersebut akan ditampilkan selama animasi berjalan. Persentase tersebut dapat berupa angka, atau kata kunci seperti `from` dan `to`. `from` / `0%` mengindikasikan awal dari animasi, sedangkan `to` / `100%` mengindikasikan akhir dari animasi. Kita juga dapat menentukan persentase yang lainnya, seperti `25%`, `50%`, dan `75%`.
+
+#### Contoh
+
+Berikut ini adalah contoh penggunaan animasi pada elemen HTML.
+
+HTML
+
+`<div class="box"></div>`  
+
+CSS
+
+```css
+.box {
+  position: absolute;
+
+  width: 100px; 
+  height: 100px; 
+  background-color: red; 
+  
+  animation-name: example; 
+  animation-duration: 4s; 
+  animation-iteration-count: infinite; 
+} 
+
+@keyframes example { 
+  0% { 
+    background-color: red; 
+    left: 0px; top: 0px;
+    rotate: 0deg;
+  } 
+  25% { 
+    background-color: yellow; 
+    left: 200px; top: 0px; 
+    rotate: 90deg;
+  } 
+  50% { 
+    background-color: blue; 
+    left: 200px; top: 200px;
+    rotate: 180deg; 
+  } 
+  75% { 
+    background-color: green; 
+    left: 0px; top: 200px;
+    rotate: 270deg; 
+  } 
+  100% { 
+    background-color: red; 
+    left: 0px; top: 0px;
+    rotate: 360deg;
+  }
+}
+```
+
+### Membuat Animasi Loader
+
+#### HTML
+
+```html
+<div class="loader"></div>
+```
+
+#### CSS
+
+```css
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100px;
+  height: 100px;
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #3498db;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+```
+
+
+
+
+
