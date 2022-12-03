@@ -15,7 +15,7 @@ Berdasarkan kode HTML berikut, buat sintak emmet yang sesuai untuk memperpendek 
 ---
 
 ```html
-<section class="hero">
+<section id="hero">
   <h1>Hero</h1>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
   <button>Button</button>

@@ -9,6 +9,7 @@ npm create vite@latest
 ## Install
 
 ```bash
+cd namaproject
 npm install
 ```
 
