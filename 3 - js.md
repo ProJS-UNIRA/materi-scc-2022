@@ -221,7 +221,19 @@ const sayHello = function () {
 sayHello();
 ```
 
-### 6.4 Arrow Function
+### 6.4 Callback Function
+
+Callback function adalah function yang diberikan sebagai parameter ke function lain. Callback function akan dipanggil kembali di dalam function lain. Pada umumnya callback function digunakan untuk menangani event. Contoh:
+
+```javascript
+setTimeout(function () {
+  console.log("Hello World!");
+}, 1000);
+```
+
+Pada contoh di atas, function yang diberikan sebagai parameter ke function `setTimeout` adalah callback function. Function `setTimeout` akan memanggil kembali callback function setelah 1 detik.
+
+### 6.5 Arrow Function
 
 Arrow function adalah function yang ditulis dengan sintaks yang lebih singkat. Arrow function tidak memiliki keyword `function` dan keyword `return`. Arrow function dapat ditulis dalam satu baris jika tidak memiliki parameter dan hanya memiliki satu baris kode.
 
@@ -243,6 +255,7 @@ const sayHello = (name) => {
   console.log(`Hello ${name}!`);
 };
 ```
+
 
 ## 7. Module
 
@@ -295,6 +308,8 @@ console.log(name); // John Doe
 
 ## 8. Promise dan Async/Await
 
+![Promise](https://miro.medium.com/proxy/0*sdGZT038FoVSLwf4.jpg)
+
 Promise dan async/await merupakan fitur baru yang ditambahkan pada ES6. Promise dan async/await digunakan untuk mengatasi masalah callback hell. Promise dan async/await digunakan untuk menangani proses asynchronous. Promise terdiri dari 3 state, yaitu:
 
   * `pending`: proses belum selesai
@@ -318,9 +333,303 @@ promise.then((result) => {
 });
 ```
 
+Untuk membuat promise, gunakan keyword `new` untuk membuat object baru. Object promise memiliki method `then` dan `catch`. Method `then` digunakan untuk menangani state `fulfilled` dan method `catch` digunakan untuk menangani state `rejected`. Then dan catch menerima satu parameter berupa fungsi callback. Fungsi callback menerima satu parameter berupa nilai yang dikirimkan oleh fungsi `resolve` atau `reject`.
+
+Async/await merupakan sintaks yang digunakan untuk menulis kode secara synchronous. Async/await dapat digunakan untuk menangani proses asynchronous. Async/await dapat digunakan untuk menangani promise. Async/await dapat digunakan untuk menangani function yang mengembalikan promise.
+
+Contoh penggunaan async/await adalah sebagai berikut:
+
+```javascript
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Hello World!");
+  }, 2000);
+});
+
+const callPromise = async () => {
+  const result = await promise;
+  console.log(result);
+};
+
+callPromise();
+```
+
+Untuk membuat function async, gunakan keyword `async` di depan nama function. Untuk menunggu proses promise, gunakan keyword `await` di depan nama promise. Fungsi async akan menunggu hingga promise selesai. Fungsi async akan mengembalikan nilai yang dikirimkan oleh fungsi `resolve` atau `reject`.
+
+Pada async function, jika terdapat error, maka async function akan langsung berhenti dan mengembalikan nilai yang dikirimkan oleh fungsi `reject`. Untuk menangani error, gunakan keyword `try` dan `catch`. Contoh penggunaan try dan catch adalah sebagai berikut:
+
+```javascript
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject("Error!");
+  }, 2000);
+});
+
+const callPromise = async () => {
+  try {
+    const result = await promise;
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+callPromise();
+```
+
 ## 9. DOM
 
-DOM adalah singkatan dari Document Object Model. DOM adalah API yang digunakan untuk mengakses dan memanipulasi elemen HTML. DOM dapat digunakan untuk mengubah tampilan halaman web. DOM dapat digunakan untuk menambahkan event listener pada elemen HTML. DOM dapat digunakan untuk mengambil data dari elemen HTML.
+DOM adalah singkatan dari Document Object Model. DOM adalah API yang digunakan untuk mengakses dan memanipulasi elemen HTML. DOM dapat digunakan untuk mengubah tampilan halaman web. DOM dapat juga digunakan untuk menambahkan event listener pada elemen HTML. 
+### 9.1 Seleksi Elemen
+
+Seleksi elemen adalah proses untuk memilih elemen HTML. Seleksi elemen dapat dilakukan dengan menggunakan method `document.querySelector` dan `document.querySelectorAll`. Method `document.querySelector` digunakan untuk memilih satu elemen HTML. Method `document.querySelectorAll` digunakan untuk memilih semua elemen HTML.
+
+Contoh:
+
+```javascript
+// Seleksi satu elemen
+const title = document.querySelector("#title");
+
+// Seleksi semua elemen
+const paragraphs = document.querySelectorAll("p");
+```
+
+Beberapa tipe data dalam DOM:
+
+    * `Document`: merupakan tipe data yang merepresentasikan dokumen HTML
+    * `Node`: merupakan tipe data yang merepresentasikan elemen HTML
+    * `Element`: merupakan tipe data yang merepresentasikan elemen HTML
+    * `NodeList`: merupakan tipe data yang merepresentasikan kumpulan elemen HTML
+    * `Text`: merupakan tipe data yang merepresentasikan teks
+    * `Comment`: merupakan tipe data yang merepresentasikan komentar
+
+### 9.2 Manipulasi Elemen
+
+Manipulasi elemen adalah proses untuk mengubah elemen HTML. Manipulasi elemen dapat dilakukan dengan menggunakan method `innerHTML`, `style`, `classList`, dan `setAttribute`.
+
+  * `innerHTML`: digunakan untuk mengubah konten HTML
+  * `style`: digunakan untuk mengubah style CSS
+  * `classList`: digunakan untuk mengubah class CSS
+  * `setAttribute`: digunakan untuk mengubah atribut HTML
+
+Contoh:
+
+```javascript
+// Mengubah konten HTML
+const title = document.querySelector("#title");
+title.innerHTML = "Hello World!";
+
+// Mengubah style CSS
+title.style.color = "red";
+
+// Mengubah class CSS
+title.classList.add("active");
+title.classList.remove("dark");
+
+// Mengubah atribut HTML
+title.setAttribute("id", "title");
+```
+
+### 9.3 Generate Elemen
+
+Generate elemen adalah proses untuk membuat elemen HTML. Generate elemen dapat dilakukan dengan menggunakan method `createElement` dan `appendChild`.
+
+  * `createElement`: digunakan untuk membuat elemen HTML
+  * `appendChild`: digunakan untuk menambahkan elemen HTML
+  * `removeChild`: digunakan untuk menghapus elemen HTML
+  * `replaceChild`: digunakan untuk mengganti elemen HTML
+
+Contoh:
+
+```javascript
+// Membuat elemen HTML
+const title = document.createElement("h1");
+title.innerHTML = "Hello World!";
+title.style.color = "red";
+
+// Menambahkan elemen HTML
+const container = document.querySelector("#container");
+container.appendChild(title);
+
+// Menghapus elemen HTML
+container.removeChild(title);
+
+// Mengganti elemen HTML
+const newTitle = document.createElement("h1");
+newTitle.innerHTML = "Hello World!";
+newTitle.style.color = "red";
+container.replaceChild(newTitle, title);
+```
+
+### 9.4 Event Listener
+
+Event Listener adalah proses untuk menambahkan event pada elemen HTML. Event Listener dapat digunakan untuk menangani event yang terjadi pada elemen HTML. Event Listener dapat digunakan untuk menangani event yang terjadi pada elemen HTML. Event Listener dapat digunakan untuk menangani event yang terjadi pada elemen HTML.
+
+Secara umum terdapat dua cara untuk menambahkan event listener pada elemen HTML:
+
+  * Menggunakan atribut HTML
+  * Menggunakan method `addEventListener`
+
+Contoh:
+
+```html
+<!-- Menggunakan atribut HTML -->
+<button onclick="alert('Hello World!')">Click Me!</button>
+
+<!-- Menggunakan method addEventListener -->
+<button id="button">Click Me!</button>
+<script>
+  const button = document.querySelector("#button");
+  button.addEventListener("click", () => {
+    alert("Hello World!");
+  });
+</script>
+```
+
+Bentuk umum dari method `addEventListener` adalah sebagai berikut:
+
+```javascript
+element.addEventListener(event);
+element.addEventListener(event, callback, options);
+element.addEventListener(event, callback, useCapture);
+```
+
+  * `event`: nama event yang akan ditangani (daftar event dapat dilihat di [https://developer.mozilla.org/en-US/docs/Web/Events](https://developer.mozilla.org/en-US/docs/Web/Events))
+  * `callback`: fungsi yang akan dipanggil ketika event terjadi
+  * `options`: opsi tambahan (opsional)
+  * `useCapture`: opsi tambahan (opsional)
+
+`options` memiliki beberapa pilihan:
+
+  * `capture`: jika bernilai `true`, maka event listener akan dipanggil ketika event terjadi pada fase capturing. Jika bernilai `false`, maka event listener akan dipanggil ketika event terjadi pada fase bubbling. Secara default, `capture` bernilai `false`.
+  * `once`: jika bernilai `true`, maka event listener hanya akan dipanggil sekali. Secara default, `once` bernilai `false`.
+  * `passive`: jika bernilai `true`, maka event listener tidak akan membatalkan event.
+
+`useCapture` adalah alias dari `options.capture`.
+
+Contoh:
+
+```javascript
+// Event listener pada fase capturing
+element.addEventListener("click", () => {
+  console.log("click");
+}, true);
+
+// Event listener pada fase bubbling
+element.addEventListener("click", () => {
+  console.log("click");
+}, false);
+```
+
+Untuk menghapus event listener, dapat digunakan method `removeEventListener`.
+
+```javascript
+element.removeEventListener(event, callback, options);
+element.removeEventListener(event, callback, useCapture);
+```
+
+### 9.5 Event Object
+
+Event object adalah objek yang digunakan untuk menangani event. Event object dapat digunakan untuk mengakses informasi dari event yang terjadi. Contoh informasi yang dapat diakses melalui event object adalah:
+
+  * `target`: elemen HTML yang menjadi target dari event
+  * `preventDefault`: fungsi untuk membatalkan event
+  * `stopPropagation`: fungsi untuk menghentikan event propagation
+
+Contoh:
+  
+```javascript
+element.addEventListener("click", (event) => {
+  console.log(event.target);
+});
+
+element.addEventListener("click", (event) => {
+  event.preventDefault();
+});
+```
+
+## 10. Javascript API
+
+### 10.1 Fetch API
+
+Fetch API adalah API yang digunakan untuk mengambil data dari server. Fetch API dapat digunakan untuk mengambil data dari server dengan menggunakan method `fetch`.
+
+```javascript
+fetch(url);
+fetch(url, options);
+```
+
+  * `url`: URL dari data yang akan diambil (contoh: `https://jsonplaceholder.typicode.com/posts/1`)
+  * `options`: opsi tambahan (opsional)
+
+`options` memiliki beberapa pilihan:
+
+  * `method`: method HTTP yang digunakan untuk mengambil data (default: `GET`, daftar method HTTP dapat dilihat di [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+  * `headers`: header HTTP yang digunakan untuk mengambil data (default: `{}`)
+  * `body`: body HTTP yang digunakan untuk mengambil data (default: `null`)
+
+Contoh:
+  
+```javascript
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+
+// menggunakan async / await
+const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+const data = await response.json();
+console.log(data);
+
+// menggunakan async / await (versi singkat)
+const data = await (await fetch("https://jsonplaceholder.typicode.com/posts/1")).json();
+
+// method POST dengan async / await
+const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    title: "Hello World!",
+    body: "Lorem ipsum dolor sit amet",
+    userId: 1,
+  }),
+});
+const data = await response.json();
+console.log(data);
+```
+
+### 10.2 Local dan Session Storage
+
+Local storage dan session storage adalah API yang digunakan untuk menyimpan data pada browser. Data yang disimpan pada local storage dan session storage akan tersimpan pada browser, sehingga data tersebut dapat diakses kembali pada saat browser tersebut dibuka kembali.
+
+Local storage dan session storage memiliki method yang sama, yaitu:
+
+  * `setItem(key, value)`: menyimpan data dengan key dan value yang ditentukan
+  * `getItem(key)`: mengambil data dengan key yang ditentukan
+  * `removeItem(key)`: menghapus data dengan key yang ditentukan
+  * `clear()`: menghapus semua data
+
+Contoh:
+
+```javascript
+// menyimpan data
+localStorage.setItem("name", "John Doe");
+sessionStorage.setItem("name", "John Doe");
+
+// mengambil data
+const name = localStorage.getItem("name");
+const name = sessionStorage.getItem("name");
+
+// menghapus data
+localStorage.removeItem("name");
+sessionStorage.removeItem("name");
+
+// menghapus semua data
+localStorage.clear();
+sessionStorage.clear();
+```
+
 
 
 
