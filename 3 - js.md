@@ -435,6 +435,7 @@ title.setAttribute("id", "title");
 Generate elemen adalah proses untuk membuat elemen HTML. Generate elemen dapat dilakukan dengan menggunakan method `createElement` dan `appendChild`.
 
   * `createElement`: digunakan untuk membuat elemen HTML
+  * `createTextNode`: digunakan untuk membuat teks
   * `appendChild`: digunakan untuk menambahkan elemen HTML
   * `removeChild`: digunakan untuk menghapus elemen HTML
   * `replaceChild`: digunakan untuk mengganti elemen HTML
